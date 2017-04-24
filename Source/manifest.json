@@ -1,9 +1,9 @@
 {
 	"manifest_version": 2,
-	"name": "Cloud To Butt",
+	"name": "Black to African American",
 	"version": "1.0",
-	"description": "Replaces the text 'the cloud' with 'my butt'.",
-	"content_scripts": 
+	"description": "Replaces the text 'Black' with 'African American'.",
+	"content_scripts":
 	[
 		{
 			"matches": ["*://*/*"],

@@ -1,47 +1,77 @@
-walk(document.body);
+(function () {
+    function toArray(obj) {
+        var array = [];
+        if (!obj) {
+            return array;
+        }
+        // iterate backwards ensuring that length is an UInt32
+        for (var i = obj.length >>> 0; i--;) {
+            array[i] = obj[i];
+        }
+        return array;
+    }
 
-function walk(node) 
-{
-	// I stole this function from here:
-	// http://is.gd/mwZp7E
-	
-	var child, next;
-	
-	if (node.tagName.toLowerCase() == 'input' || node.tagName.toLowerCase() == 'textarea'
-	    || node.classList.indexOf('ace_editor') > -1) {
-		return;
-	}
+    walk(document.body);
 
-	switch ( node.nodeType )  
-	{
-		case 1:  // Element
-		case 9:  // Document
-		case 11: // Document fragment
-			child = node.firstChild;
-			while ( child ) 
-			{
-				next = child.nextSibling;
-				walk(child);
-				child = next;
-			}
-			break;
+    function walk(node) {
+        // I stole this function from here:
+        // http://is.gd/mwZp7E
 
-		case 3: // Text node
-			handleText(node);
-			break;
-	}
-}
+        var child, next;
 
-function handleText(textNode) 
-{
-	var v = textNode.nodeValue;
+        classList = toArray(node.classList);
 
-	v = v.replace(/\bThe Cloud\b/g, "My Butt");
-	v = v.replace(/\bThe cloud\b/g, "My butt");
-	v = v.replace(/\bthe Cloud\b/g, "my Butt");
-	v = v.replace(/\bthe cloud\b/g, "my butt");
-	
-	textNode.nodeValue = v;
-}
+        if (node.tagName && node.tagName.toLowerCase() === 'input') {
+            return;
+        }
+        if (node.tagName && node.tagName.toLowerCase() === 'textarea') {
+            return;
+        }
+        if (classList.indexOf('ace_editor') > -1) {
+            return;
+        }
+
+        switch (node.nodeType) {
+            case 1:  // Element
+            case 9:  // Document
+            case 11: // Document fragment
+                child = node.firstChild;
+                while (child) {
+                    next = child.nextSibling;
+                    walk(child);
+                    child = next;
+                }
+                break;
+
+            case 3: // Text node
+                handleText(node);
+                break;
+        }
+    }
+
+    function handleText(textNode) {
+        var v = textNode.nodeValue;
+
+        v = v.replace(/\bBlack\b/ig, "African American");
+        v = v.replace(/\bBrown\b/ig, "Muslim American");
+        v = v.replace(/\bRed\b/ig, "Native American");
+        v = v.replace(/\bYellow\b/ig, "Asian American");
+        v = v.replace(/\bWhite\b/ig, "Caucasian American");
+
+        // Bonus Tumblr edition
+        v = v.replace(/\bman\b/g, "person");
+        v = v.replace(/\bMan\b/g, "Person");
+        v = v.replace(/\bwoman\b/g, "Person");
+        v = v.replace(/\bWoman\b/g, "Person");
+        v = v.replace(/\bmen\b/g, "people");
+        v = v.replace(/\bMen\b/g, "People");
+        v = v.replace(/\bwomen\b/g, "people");
+        v = v.replace(/\bWomen\b/g, "People");
+        v = v.replace(/\bstraght\b/g, "cisgender");
+        v = v.replace(/\bStraght\b/g, "Cisgender");
+
+        textNode.nodeValue = v;
+    }
 
 
+}());
