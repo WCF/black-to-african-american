@@ -52,11 +52,16 @@
     function handleText(textNode) {
         var v = textNode.nodeValue;
 
+        // http://imgur.com/9LgBQ0r
         v = v.replace(/\bBlack\b/ig, "African American");
         v = v.replace(/\bBrown\b/ig, "Muslim American");
         v = v.replace(/\bRed\b/ig, "Native American");
         v = v.replace(/\bYellow\b/ig, "Asian American");
         v = v.replace(/\bWhite\b/ig, "Caucasian American");
+
+        // http://www.telegraph.co.uk/culture/film/film-news/9777404/Django-Unchained-star-Samuel-L-Jackson-challenges-TV-reporter-to-say-N-word.html
+        // Think of the children!
+        v = v.replace(/\bnigg(a|er)(\b)?/ig, "N word");
 
         // Bonus Tumblr edition
         v = v.replace(/\bman\b/g, "person");
