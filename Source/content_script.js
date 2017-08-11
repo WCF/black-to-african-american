@@ -68,7 +68,7 @@
         v = v.replace(/\bBlack\b/ig, "African American");  // Or "the B word"
         v = v.replace(/\bBrown\b/ig, "Muslim American");
         v = v.replace(/\bRed\b/ig, "Native American");
-        v = v.replace(/\bYellow\b/ig, "Asian American");
+        v = v.replace(/\bYellow\b/ig, "Chinese American");
         // https://imgur.com/sEbuvTs
         v = v.replace(/\bWhite\b/ig, "Caucasian American");
 
@@ -102,6 +102,7 @@
         // u
         // v
         v = v.replace(/\bvagina\b/ig, "V word");
+        v = v.replace(/\bvoldemort\b/ig, "You Know Who");
         // w
         // x
         // y
@@ -167,8 +168,11 @@
         v = v.replace(/\brepublican\b/g, "bigot");
         v = v.replace(/\bRepublican\b/g, "Bigot");
         // https://imgur.com/rjjFnCd
-        v = v.replace(/\bretard/g, "extremely derogatory term");
-        v = v.replace(/\bRetard/g, "Extremely derogatory term");
+        v = v.replace(/\bretard\b/g, "extremely derogatory term");
+        v = v.replace(/\bRetard\b/g, "Extremely derogatory term");
+        // http://i.imgur.com/geYlbJH.gifv
+        v = v.replace(/\bretarded\b/g, "mentally challenged");
+        v = v.replace(/\bRetarded\b/g, "Mentally challenged");
         // https://imgur.com/rO3VvFM
         v = v.replace(/\bhousewife\b/g, "person");
         v = v.replace(/\bHousewife\b/g, "Person");
@@ -193,6 +197,9 @@
         // https://townhall.com/tipsheet/mattvespa/2017/05/20/in-seattle-police-can-no-longer-report-suspects-they-have-to-say-community-members-n2329542?
         v = v.replace(/\bsuspect/ig, matchCase("community member"));  // even if it is a verb
         v = v.replace(/\bcitizen/ig, matchCase("community member"));  // even if it is the watch brand
+
+        v = v.replace(/\bused/ig, matchCase("pre-owned"));  // Apologiees to auto manufacturers for leaving this one out until now
+        v = v.replace(/\bsanta claus/ig, matchCase("non-denominational winter man"));
 
         textNode.nodeValue = v;
     }
